@@ -1,5 +1,3 @@
-from turtle import forward
-from unicodedata import name
 import torch.nn.functional as func
 
 from .downSampling import *
@@ -11,8 +9,8 @@ class UNet(nn.Module):
         self.inputChannels = inputChannels
         self.outputClasses = outputClasses
 
-        self.downSampling = downSa(inputChannels, 1024)
-        self.upSampling = upSa(1024, outputClasses)
+        self.downSampling = downSamolingProcess(inputChannels, 1024)
+        self.upSampling = upSamolingProcess(1024, outputClasses)
 
     def forward(self, x):
         xBottom = self.downSampling(x)
